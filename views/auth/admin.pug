@@ -1,0 +1,98 @@
+doctype html
+html(lang='en')
+  head
+    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    title AerolineasGuacamayas
+    // CSS
+    
+    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
+    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+    
+  body
+    nav.white(role='navigation')
+      .nav-wrapper.container
+        a#logo-container.brand-logo(href='#') AeroGuacamayasLogo
+        ul.right.hide-on-med-and-down
+          li
+            a Menu
+          li
+            a Contactanos
+
+      
+        //img(src='./public/backgroundA.jpg', alt='background img 1', style='width:1800px; height:500px;')
+    .container
+      .section
+        // Icon Section
+        .icon-block
+          h4.center Flota
+          .row
+            .card.blue-grey.darken-1.center.m2
+              .card-content.white-text
+                button.waves-effect.waves-light.btn Agregar Avion
+                button.waves-effect.waves-light.btn Editar Avion
+                button.waves-effect.waves-light.btn Eliminar Avion
+                button.waves-effect.waves-light.btn Ver Flota
+              //
+                <div class="card-action">
+                <a href="#">This is a link</a>
+                <a href="#">This is a link</a>
+                </div>
+    .container
+      .section
+        // Icon Section
+        .icon-block
+          h4.center Modelos
+          .row
+            .card.blue-grey.darken-1.center.m2
+              .card-content.white-text
+                button.waves-effect.waves-light.btn Nuevo Modelo
+                button.waves-effect.waves-light.btn Editar Modelo
+                button.waves-effect.waves-light.btn Eliminar Modelo
+                button.waves-effect.waves-light.btn Ver Modelos
+              //
+                <div class="card-action">
+                <a href="#">This is a link</a>
+                <a href="#">This is a link</a>
+                </div>
+    .container
+      .section
+        .row
+          .col.s12.center
+            h3
+              i.mdi-content-send.brown-text
+            h4 Nosotros
+            p.left-align.light
+              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
+    footer.page-footer.teal
+      .container
+        .row
+          .col.l6.s12
+            h5.white-text Contactanos
+            p.grey-text.text-lighten-4 Aerolineas Guacamaya Sede Caracas Venezuela
+          .col.l3.s12
+            h5.white-text Encuentranos
+            ul
+              li
+                a.white-text(href='#!') Instagram
+              li
+                a.white-text(href='#!') Twitter
+          .col.l3.s12
+            h5.white-text Directorio
+            ul
+              li
+                a.white-text(href='#!') Flota
+              li
+                a.white-text(href='#!') Modelos 
+      .footer-copyright
+        .container
+          | Hecho con 
+          a.brown-text.text-lighten-3(href='http://materializecss.com') Materialize
+    -for(i=0; i<avion.length; i++)
+        h2 #{avion[i].id}
+
+    -for(j=0; j<modelo.length; j++)
+        h2 #{modelo[j].id + " " + modelo[j].nombre + " " + modelo[j].peso + " " + modelo[j].cantAsientos}
+    // Scripts
+    script(src='https://code.jquery.com/jquery-2.1.1.min.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
