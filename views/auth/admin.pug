@@ -1,98 +1,259 @@
 doctype html
 html(lang='en')
   head
-    meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
-    meta(name='viewport', content='width=device-width, initial-scale=1')
-    title AerolineasGuacamayas
+    // Required meta tags
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1, shrink-to-fit=no')
+    // Bootstrap CSS
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css', integrity='sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO', crossorigin='anonymous')
+    // Font Awesome
+    link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.3.1/css/all.css', integrity='sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU', crossorigin='anonymous')
+    // Fuente pacifico
+    link(href='https://fonts.googleapis.com/css?family=Pacifico', rel='stylesheet')
     // CSS
-    
-    link(rel='stylesheet', href='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css')
-    link(href='https://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
-    
+    link(rel='stylesheet', href='css/style.css')
+    title GuacaBase
   body
-    nav.white(role='navigation')
-      .nav-wrapper.container
-        a#logo-container.brand-logo(href='#') AeroGuacamayasLogo
-        ul.right.hide-on-med-and-down
-          li
-            a Menu
-          li
-            a Contactanos
+    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark
+      a.navbar-brand(href='#') GuacaBase
+      button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+        span.navbar-toggler-icon
+      #navbarSupportedContent.collapse.navbar-collapse
+        ul.navbar-nav.mr-auto
+          li.nav-item.active
+            a.nav-link(href='#')
+              | Inicio 
+              span.sr-only (current)
+          
+          li.nav-item.dropdown
+            a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+              | Menu
+            .dropdown-menu(aria-labelledby='navbarDropdown')
+              a.dropdown-item(href='#') Flota
+              a.dropdown-item(href='#') Modelos
+              .dropdown-divider
+              a.dropdown-item(href='#') Destinos
+          
+        form.form-inline.my-2.my-lg-0
+          input.form-control.mr-sm-2(type='search', placeholder='Buscar', aria-label='Search')
+          button.btn.btn-outline-primary.my-2.my-sm-0(type='submit') Buscar
 
-      
-        //img(src='./public/backgroundA.jpg', alt='background img 1', style='width:1800px; height:500px;')
-    .container
-      .section
-        // Icon Section
-        .icon-block
-          h4.center Flota
-          .row
-            .card.blue-grey.darken-1.center.m2
-              .card-content.white-text
-                button.waves-effect.waves-light.btn Agregar Avion
-                button.waves-effect.waves-light.btn Editar Avion
-                button.waves-effect.waves-light.btn Eliminar Avion
-                button.waves-effect.waves-light.btn Ver Flota
-              //
-                <div class="card-action">
-                <a href="#">This is a link</a>
-                <a href="#">This is a link</a>
-                </div>
-    .container
-      .section
-        // Icon Section
-        .icon-block
-          h4.center Modelos
-          .row
-            .card.blue-grey.darken-1.center.m2
-              .card-content.white-text
-                button.waves-effect.waves-light.btn Nuevo Modelo
-                button.waves-effect.waves-light.btn Editar Modelo
-                button.waves-effect.waves-light.btn Eliminar Modelo
-                button.waves-effect.waves-light.btn Ver Modelos
-              //
-                <div class="card-action">
-                <a href="#">This is a link</a>
-                <a href="#">This is a link</a>
-                </div>
-    .container
-      .section
-        .row
-          .col.s12.center
-            h3
-              i.mdi-content-send.brown-text
-            h4 Nosotros
-            p.left-align.light
-              | Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam scelerisque id nunc nec volutpat. Etiam pellentesque tristique arcu, non consequat magna fermentum ac. Cras ut ultricies eros. Maecenas eros justo, ullamcorper a sapien id, viverra ultrices eros. Morbi sem neque, posuere et pretium eget, bibendum sollicitudin lacus. Aliquam eleifend sollicitudin diam, eu mattis nisl maximus sed. Nulla imperdiet semper molestie. Morbi massa odio, condimentum sed ipsum ac, gravida ultrices erat. Nullam eget dignissim mauris, non tristique erat. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae;
-    footer.page-footer.teal
-      .container
-        .row
-          .col.l6.s12
-            h5.white-text Contactanos
-            p.grey-text.text-lighten-4 Aerolineas Guacamaya Sede Caracas Venezuela
-          .col.l3.s12
-            h5.white-text Encuentranos
-            ul
-              li
-                a.white-text(href='#!') Instagram
-              li
-                a.white-text(href='#!') Twitter
-          .col.l3.s12
-            h5.white-text Directorio
-            ul
-              li
-                a.white-text(href='#!') Flota
-              li
-                a.white-text(href='#!') Modelos 
-      .footer-copyright
-        .container
-          | Hecho con 
-          a.brown-text.text-lighten-3(href='http://materializecss.com') Materialize
-    -for(i=0; i<avion.length; i++)
-        h2 #{avion[i].id}
+    #carouselExampleControls.carousel.slide(data-ride='carousel')
+          .carousel-inner
+            .carousel-item.active
+              img.d-block.w-100(src='https://static.vix.com/es/sites/default/files/imj/nuestrorumbo/5/5-riesgos-de-viajar-en-avion-que-debes-conocer-1.jpg', alt='First slide', style='height:400px')
+            
 
-    -for(j=0; j<modelo.length; j++)
-        h2 #{modelo[j].id + " " + modelo[j].nombre + " " + modelo[j].peso + " " + modelo[j].cantAsientos}
-    // Scripts
-    script(src='https://code.jquery.com/jquery-2.1.1.min.js')
-    script(src='https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js')
+    // Bloque
+    .row
+      .col-1
+      // Card
+      .col-10
+        .card.justify-content-center.mt-2.mb-2(style='background: darkslategrey')
+          ul.list-group.list-group-flush
+            li.list-group-item
+              h3.float-center Flota
+            li.list-group-item
+              // Button trigger modal
+              button.btn.btn-outline-secondary.m-2(type='button', data-toggle='modal', data-target='#verAvion')
+                | Ver Aviones
+              button.btn.btn-outline-secondary.m-2(type='button', data-toggle='modal', data-target='#anadirAvion')
+                | Añadir Avion
+              
+      .col-1
+    // Bloque
+    .row
+      .col-1
+      // Card
+      .col-10
+        .card.justify-content-center.mt-2.mb-2(style='background: darkslategrey')
+          ul.list-group.list-group-flush
+            li.list-group-item
+              h3.float-center Modelos de Avion
+            li.list-group-item
+              // Button trigger modal
+              button.btn.btn-outline-secondary.m-2(type='button', data-toggle='modal', data-target='#verModelo')
+                | Ver Modelo
+              button.btn.btn-outline-secondary.m-2(type='button', data-toggle='modal', data-target='#anadirModelo')
+                | Añadir Modelo
+              
+      .col-1
+    // Bloque
+    .row
+      .col-1
+      // Card
+      .col-10
+        .card.justify-content-center.mt-2.mb-2(style='background:white')
+          ul.list-group.list-group-flush
+            li.list-group-item
+              h3.float-center Sobre Nosotros
+            p.m-2
+              | Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quos, nesciunt labore voluptate ducimus accusantium modi saepe possimus architecto, quo tenetur, dolorum autem deleniti delectus doloribus vero aliquid! Soluta, asperiores?
+      .col-1
+
+      .row(style='background:primary')
+        .col-4
+          li  
+        .col-4
+        .col-4
+
+
+    // ----------------------------------   Modales   ----------------------------------
+    // Modal para ver los Aviones
+    #verAvion.modal.fade(tabindex='-1', role='dialog', aria-labelledby='verAvion', aria-hidden='true')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            h5#exampleModalLabel.modal-title Registro de Aviones
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+          .modal-body
+
+            table
+                thead
+                    tr
+                        th(scope='col') ID |
+                        th(scope='col') Código Modelo
+                        th(scope='col')
+                        th(scope='col')
+
+                tbody
+                -for(var i=0; i<avion.length; i++)
+                    tr
+                        td #{avion[i].id}
+                        td #{avion[i].moduleID}
+                        td 
+                            form(action=`edit/${avion[i].id}`,method="POST")
+                                button.btn.btn-primary.editbtn(type='submit') Editar
+                        td
+                            form(action=`delete/${avion[i].id}`, method="POST")
+                                button.btn.btn-danger.deletebtn(type='submit') Eliminar
+
+          .modal-footer
+            button.btn.btn-primary(type='button', data-dismiss='modal') Close
+    
+    // Modal
+    #anadirAvion.modal.fade(tabindex='-1', role='dialog', aria-labelledby='anadirAvion', aria-hidden='true')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            h5#exampleModalLabel.modal-title Nuevo Avion
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+          .modal-body
+            
+            table
+                thead
+                    tr
+                        th(scope='col')
+                        th(scope='col')
+                tbody
+                    form(action=`/create`, method='POST')
+                        tr
+                            td
+                                .input-field.col.s12
+                                    input#id.validate(type='number', value=0, maxlength=3, require, name='id')
+                                    label(for='id') Ingrese ID
+                            td
+                                .input-field.col.s12
+                                    input#moduleID.validate(type='number', value=0, maxlength=3, require, name='moduleID')
+                                    label(for='moduleID') Ingrese modelo
+                        
+                        button.submit(type='submit') Crear
+
+          .modal-footer
+            button.btn.btn-primary(type='button', data-dismiss='modal') Close
+
+    // Modal
+    #verModelo.modal.fade(tabindex='-1', role='dialog', aria-labelledby='verModelo', aria-hidden='true')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            h5#exampleModalLabel.modal-title Modal title
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+          .modal-body
+
+            table
+                thead
+                    tr
+                        th(scope='col') ID 
+                        th(scope='col') Nombre
+                        th(scope='col') Peso
+                        th(scope='col') Cant Asientos
+                        th(scope='col')
+                        th(scope='col')
+
+                tbody
+                -for(var i=0; i<modelo.length; i++)
+                    tr
+                        td #{modelo[i].id}
+                        td #{modelo[i].nombre}
+                        td #{modelo[i].peso}
+                        td #{modelo[i].cantAsientos}
+                        td
+                            form(action=`/edit/mod/${modelo[i].id}`,method="POST")
+                                button.btn.btn-primary.editbtn(type='submit') Editar
+                        td
+                            form(action=`/delete/mod/${modelo[i].id}`, method="POST")
+                                button.btn.btn-danger.deletebtn(type='submit') Eliminar
+
+          .modal-footer
+            button.btn.btn-primary(type='button', data-dismiss='modal') Close
+
+    // Modal
+    #anadirModelo.modal.fade(tabindex='-1', role='dialog', aria-labelledby='anadirModelo', aria-hidden='true')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            h5#exampleModalLabel.modal-title Crear Modelo
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+          .modal-body
+            
+            table
+                thead
+                    tr
+
+                tbody
+                    form(action=`/mod/create`, method='POST')
+                        tr
+                            td
+                                .input-field.col.s12
+                                    input#id.validate(type='number', value=0, maxlength=10, require, name='id')
+                                    label(for='id') Ingrese ID
+                            td
+                                .input-field.col.s12
+                                    input#nombre.validate(type='text', value="nombre", maxlength=250, require, name='nombre')
+                                    label(for='nombre') Ingrese nombre
+                            
+                                .input-field.col.s12
+                                    input#peso.validate(type='number', value=0, require, name='peso')
+                                    label(for='peso') Ingrese peso
+                            
+                                .input-field.col.s12
+                                    input#cantAsientos.validate(type='number', value=0, require, name='cantAsientos')
+                                    label(for='cantAsientos') Ingrese cant Asientos
+
+                        button.submit(type='submit') Crear
+
+          .modal-footer
+            button.btn.btn-primary(type='button', data-dismiss='modal') Close
+    // Modal
+    #editarModelo.modal.fade(tabindex='-1', role='dialog', aria-labelledby='editarModelo', aria-hidden='true')
+      .modal-dialog(role='document')
+        .modal-content
+          .modal-header
+            h5#exampleModalLabel.modal-title Editar Modelo
+            button.close(type='button', data-dismiss='modal', aria-label='Close')
+              span(aria-hidden='true') ×
+          .modal-body
+
+          .modal-footer
+            button.btn.btn-primary(type='button', data-dismiss='modal') Close
+   
+    // Optional JavaScript
+    // jQuery first, then Popper.js, then Bootstrap JS
+    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js', integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo', crossorigin='anonymous')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js', integrity='sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49', crossorigin='anonymous')
+    script(src='https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js', integrity='sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy', crossorigin='anonymous')

@@ -7,19 +7,17 @@ const controller = {};
 // Create
 controller.createModelo = async (modelo, callback) => {
     if(!!modelo){
+        console.log("Entró")
         try{
             let response = await Modelo.create({
-                ModeloID: Modelo.ModeloID,
-                Nombre: Modelo.Nombre,
-                Peso: Modelo.Peso,
-                CantAsientos: Modelo.CantAsientos,
-                DistanciaDespegue: Modelo.DistanciaDespegue,
-                CapacidadEquipaje: Modelo.DistanciaDespegue,
-                VelocidadMax: Modelo.VelocidadMax,
-                VelocidadCrucero: Modelo.VelocidadCrucero
+                id: modelo.id,
+                nombre: modelo.nombre,
+                peso: modelo.peso,
+                cantAsientos: modelo.cantAsientos,
             })
             callback(null);
         }catch(err){
+            console.log(err)
             callback(err);
         }
     }
@@ -27,9 +25,15 @@ controller.createModelo = async (modelo, callback) => {
 };
 
 // Read
-controller.readModelo = async (callback) => {
+controller.readEveryModelo = async (callback) => {
     try {
-        let response = await Modelo.findAll();
+        let response = await Modelo.findAll({
+            where:{
+                nombre: {
+                    $gt: ""
+                }
+            }
+        });
         let modelo = response.map(result => result.dataValues);
         callback(modelo, null,modelo.length);
     } catch(err){
@@ -37,21 +41,30 @@ controller.readModelo = async (callback) => {
     }
 };
 
+controller.readModelo = async (id,callback) => {
+    try {
+        let response = await Modelo.findAll({
+            where: {
+                id
+            }
+        })
+        let modelo = response.map(result => result.dataValues);
+        callback(modelo[0], null);
+    } catch(err) {
+        callback(err);
+    }
+}
+
 // Update
-controller.updateModelo = async (Modelo,ModeloID,callback) => {
+controller.updateModelo = async (modelo,id,callback) => {
     try {
         let response = await Modelo.update({
-            ModeloID: Modelo.ModeloID,
-                Nombre: Modelo.Nombre,
-                Peso: Modelo.Peso,
-                CantAsientos: Modelo.CantAsientos,
-                DistanciaDespegue: Modelo.DistanciaDespegue,
-                CapacidadEquipaje: Modelo.DistanciaDespegue,
-                VelocidadMax: Modelo.VelocidadMax,
-                VelocidadCrucero: Modelo.VelocidadCrucero
+                nombre: modelo.nombre,
+                peso: modelo.peso,
+                cantAsientos: modelo.cantAsientos,
         },{
             where:{
-                ModeloID
+                id
             }
         })
         callback(null);
@@ -61,17 +74,19 @@ controller.updateModelo = async (Modelo,ModeloID,callback) => {
 }
 
 // Delete
-controller.deleteModelo = async (ModeloID,callback) => {
+controller.deleteModelo = async (id,callback) => {
     try {
-        let response = await Modelo.delete({
-            ModeloID: -1
+        console.log("Esto medio camina");
+        let response = await Modelo.update({
+            nombre: ""
         },{
             where:{
-                ModeloID
+                id
             }
         })
         callback(null);
     } catch(err){
+        console.log(err);
         callback(err);
     }
 }

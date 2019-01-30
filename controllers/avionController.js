@@ -9,8 +9,8 @@ controller.createAvion = async (avion, callback) => {
     if(!!avion){
         try{
             let response = await Avion.create({
-                AvionID: avion.AvionID,
-                ModeloID: avion.ModeloID
+                id: avion.id,
+                moduleID: avion.moduleID
             })
             callback(null);
         }catch(err){
@@ -21,11 +21,11 @@ controller.createAvion = async (avion, callback) => {
 };
 
 // Read
-controller.readAvion = async (AvionID, callback) => {
+controller.readAvion = async (id, callback) => {
     try {
         let response = await Avion.findAll({
             where: {
-                AvionID
+                id
             }
         })
         let avion = response.map(result => result.dataValues);
@@ -37,7 +37,14 @@ controller.readAvion = async (AvionID, callback) => {
 
 controller.readEveryAvion = async (callback) => {
     try {
-        let response = await Avion.findAll();
+        let response = await Avion.findAll({
+            where: {
+                moduleID: {
+                    gt: -1
+                }
+            }
+        })
+        
         console.log("Response" + response + "\n");
         let avion = response.map(result => result.dataValues);
         callback(avion,null,avion.length);
@@ -47,35 +54,39 @@ controller.readEveryAvion = async (callback) => {
 };
 
 // Update
-controller.updateAvion = async (Avion,AvionID,callback) => {
+controller.updateAvion = async (avion,id,callback) => {
     try {
+        console.log('Entro '+ avion + ' y ' + id);
         let response = await Avion.update({
-            AvionID: Avion.AvionID,
-            ModeloID: Avion.ModeloID
+            moduleID: avion.moduleID
         },{
             where:{
-                AvionID
+                id
             }
         })
         callback(null);
     } catch(err){
+        console.log('Error ocurrido: ' + err);
         callback(err);
     }
 }
 
 
 // Delete
-controller.deleteAvion = async (AvionID,callback) => {
+controller.deleteAvion = async (id,callback) => {
     try {
-        let response = await Avion.delete({
-            AvionID: -1
+        console.log("Esto medio camina");
+        let response = await Avion.update({
+            moduleID: -1
         },{
             where:{
-                AvionID
+                id
             }
         })
         callback(null);
+        console.log("AVION BORRADO EXITOSAMENTE");
     } catch(err){
+        console.log("HUBO UN ERROR EN LA ELIMINACION: " + err);
         callback(err);
     }
 }
